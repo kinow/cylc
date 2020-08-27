@@ -1,6 +1,6 @@
 name: test
 
-on: [pull_request]
+on: [push, pull_request]
 
 
 jobs:
@@ -76,6 +76,9 @@ jobs:
       - name: Install
         run: |
           pip install ."[all]"
+
+      - name: Add mail utils
+        run: echo "::add-path::${GITHUB_WORKSPACE}/.github/bin"
 
       - name: Test
         run: |
